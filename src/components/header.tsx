@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { motion } from "motion/react"
 import { Moon, Sun } from "lucide-react"
 
 import Container from "./ui/container"
@@ -36,14 +37,18 @@ const Header = () => {
     }
 
     return (
-        <header
+        <motion.header
             className={cn(
                 "sticky top-0 left-0 w-full bg-background/80 backdrop-blur-md z-50",
                 isScrolled && "border-b border-b-border"
             )}
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            aria-label="Site header"
         >
             <Container className="flex justify-between items-center">
-                <div className="py-5">{metaData.creator}</div>
+                <div className="py-5 text-xl font-semibold">{metaData.creator}</div>
                 <nav className="ml-auto">
                     <ul className="flex gap-6">
                         {navItems.map((item) => (
@@ -68,7 +73,7 @@ const Header = () => {
                     {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
                 </Button>
             </Container>
-        </header>
+        </motion.header>
     )
 }
 

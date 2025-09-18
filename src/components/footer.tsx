@@ -1,20 +1,27 @@
 "use client"
 
-import Container from "./ui/container"
-import { metaData, personalData } from "@/constants/seo-data"
+import { motion } from "motion/react"
 import { ArrowUp, Mail, MapPin } from "lucide-react"
+
+import Container from "./ui/container"
 import { Button } from "./ui/button"
+import { metaData, personalData } from "@/constants/seo-data"
 import { navItems, socialLinks } from "@/constants/links-data"
 
 const Footer = () => {
     return (
-        <footer className="border-t bg-muted/50 px-4">
+        <footer className="border-t bg-muted/50 px-4 pt-10 pb-5">
             <Container>
                 <div
                     className="py-4 flex flex-col lg:flex-row justify-between gap-8 lg:gap-4"
                     aria-label="Footer top section"
                 >
-                    <div className="space-y-4 flex-6/12">
+                    <motion.div
+                        className="space-y-4 flex-6/12"
+                        initial={{ opacity: 0, x: -40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                    >
                         <div>
                             <h2>{personalData.name}</h2>
                         </div>
@@ -34,8 +41,13 @@ const Footer = () => {
                                 </li>
                             ))}
                         </ul>
-                    </div>
-                    <div className="space-y-4 flex-2/12">
+                    </motion.div>
+                    <motion.div
+                        className="space-y-4 flex-2/12"
+                        initial={{ opacity: 0, x: 40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                    >
                         <h3>Quick Links</h3>
                         <ul className="space-y-2" aria-label="Footer navigation links">
                             {navItems.map((item) => (
@@ -54,8 +66,13 @@ const Footer = () => {
                                 </li>
                             ))}
                         </ul>
-                    </div>
-                    <div className="space-y-4 flex-4/12">
+                    </motion.div>
+                    <motion.div
+                        className="space-y-4 flex-4/12"
+                        initial={{ opacity: 0, x: 40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                    >
                         <h3>Get In Touch</h3>
                         <ul className="space-y-2" aria-label="Contact information">
                             <li>
@@ -79,11 +96,14 @@ const Footer = () => {
                                 </Button>
                             </li>
                         </ul>
-                    </div>
+                    </motion.div>
                 </div>
-                <div
+                <motion.div
                     className="mt-4 flex items-center justify-between text-sm py-6 border-t"
                     aria-label="Footer bottom section"
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
                 >
                     <div className="text-muted-foreground">
                         &copy; 2025 {personalData.name}. Made with ❤️ and lots of ☕ & Three.js ✨
@@ -99,7 +119,7 @@ const Footer = () => {
                             <ArrowUp className="h-4 w-4" />
                         </Button>
                     </div>
-                </div>
+                </motion.div>
             </Container>
         </footer>
     )
