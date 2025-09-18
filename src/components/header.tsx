@@ -32,8 +32,10 @@ const Header = () => {
 
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id)
+
         if (element) {
             element.scrollIntoView({ behavior: "smooth" })
+            setIsMobileMenuOpen(false)
         }
     }
 
@@ -56,7 +58,6 @@ const Header = () => {
                         {navItems.map((item) => (
                             <li key={item.id}>
                                 <button
-                                    id={item.id}
                                     className="cursor-pointer
                                     underline
                                     decoration-transparent
