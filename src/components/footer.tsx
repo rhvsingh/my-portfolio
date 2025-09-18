@@ -7,22 +7,22 @@ import Container from "./ui/container"
 import { Button } from "./ui/button"
 import { metaData, personalData } from "@/constants/seo-data"
 import { navItems, socialLinks } from "@/constants/links-data"
+import RotatingEarth from "./three/rotating-earth"
 
 const Footer = () => {
     return (
         <footer className="border-t bg-muted/50 px-4 pt-10 pb-5">
             <Container>
-                <div
-                    className="py-4 flex flex-col lg:flex-row justify-between gap-8 lg:gap-4"
-                    aria-label="Footer top section"
-                >
+                <div className="py-4 flex flex-col lg:flex-row justify-between gap-8" aria-label="Footer top section">
                     <motion.div
-                        className="space-y-4 flex-6/12"
+                        className="space-y-4 flex-2/5"
                         initial={{ opacity: 0, x: -40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
+                        viewport={{ once: true }}
                     >
-                        <div>
+                        <div className="flex items-center space-x-3">
+                            <RotatingEarth />
                             <h2>{personalData.name}</h2>
                         </div>
                         <p className="text-muted-foreground">{metaData.description}</p>
@@ -43,10 +43,11 @@ const Footer = () => {
                         </ul>
                     </motion.div>
                     <motion.div
-                        className="space-y-4 flex-2/12"
+                        className="space-y-4 flex-1/12 lg:flex-1/5"
                         initial={{ opacity: 0, x: 40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
+                        viewport={{ once: true }}
                     >
                         <h3>Quick Links</h3>
                         <ul className="space-y-2" aria-label="Footer navigation links">
@@ -68,10 +69,11 @@ const Footer = () => {
                         </ul>
                     </motion.div>
                     <motion.div
-                        className="space-y-4 flex-4/12"
+                        className="space-y-4 flex-1/3"
                         initial={{ opacity: 0, x: 40 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
+                        viewport={{ once: true }}
                     >
                         <h3>Get In Touch</h3>
                         <ul className="space-y-2" aria-label="Contact information">
@@ -104,6 +106,7 @@ const Footer = () => {
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
+                    viewport={{ once: true }}
                 >
                     <div className="text-muted-foreground">
                         &copy; 2025 {personalData.name}. Made with ❤️ and lots of ☕ & Three.js ✨
