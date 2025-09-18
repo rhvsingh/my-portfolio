@@ -12,15 +12,13 @@ export default function Home() {
     return (
         <main className="">
             <Header />
-            <div className="h-dvh">
-                <Hero />
-                <About />
-                <Skills />
-                <Projects />
-                <Experience />
-                <Resume />
-                <Contact />
-            </div>
+            <Hero />
+            <About />
+            <Skills />
+            <Projects />
+            <Experience />
+            <Resume />
+            <Contact />
             <Footer />
         </main>
     )

@@ -24,7 +24,7 @@ interface ContainerProps {
  * @param {React.ReactNode | string} props.children - The content to be rendered inside the container.
  */
 const Container = ({ className, children }: ContainerProps) => {
-    return <div className={cn("container mx-auto", className)}>{children}</div>
+    return <div className={cn("container mx-auto px-4", className)}>{children}</div>
 }
 
 export default Container

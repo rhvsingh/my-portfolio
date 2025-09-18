@@ -11,7 +11,7 @@ import RotatingEarth from "./three/rotating-earth"
 
 const Footer = () => {
     return (
-        <footer className="border-t bg-muted/50 px-4 pt-8 pb-5">
+        <footer className="border-t bg-muted/50 px-4 pt-8 pb-5 overflow-hidden" aria-label="Site footer">
             <Container>
                 <div className="py-4 flex flex-col lg:flex-row justify-between gap-8" aria-label="Footer top section">
                     <motion.div
