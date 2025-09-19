@@ -11,7 +11,7 @@ import RotatingEarth from "./three/rotating-earth"
 
 const Footer = () => {
     return (
-        <footer className="border-t bg-muted/50 px-4 pt-8 pb-5 overflow-hidden" aria-label="Site footer">
+        <footer className="border-t bg-muted/50 px-4 pt-4 lg:pt-8 pb-5 overflow-hidden" aria-label="Site footer">
             <Container>
                 <div className="py-4 flex flex-col lg:flex-row justify-between gap-8" aria-label="Footer top section">
                     <motion.div
@@ -21,9 +21,9 @@ const Footer = () => {
                         transition={{ duration: 0.5, delay: 0.1 }}
                         viewport={{ once: true }}
                     >
-                        <div className="flex items-center space-x-3">
+                        <div className="flex md:items-center space-x-1 flex-col md:flex-row md:space-x-3">
                             <RotatingEarth />
-                            <h2>{personalData.name}</h2>
+                            <h4 className="text-lg font-semibold">{personalData.name}</h4>
                         </div>
                         <p className="text-muted-foreground">{metaData.description}</p>
                         <ul className="flex space-x-4 mt-2" aria-label="Social media links">
