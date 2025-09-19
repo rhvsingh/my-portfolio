@@ -92,11 +92,16 @@ const Resume = () => {
                                 </CardContent>
                             </Card>
                             <div className="flex flex-wrap gap-4 justify-center my-8">
-                                <Button size="lg" onClick={handleDownload}>
+                                <Button size="lg" className="rounded-2xl w-full md:w-auto" onClick={handleDownload}>
                                     <Download className="h-5 w-5 mr-2" />
                                     Download Resume
                                 </Button>
-                                <Button variant="outline" size="lg" onClick={handlePreview}>
+                                <Button
+                                    variant="outline"
+                                    className="rounded-2xl w-full md:w-auto"
+                                    size="lg"
+                                    onClick={handlePreview}
+                                >
                                     <Eye className="h-5 w-5 mr-2" />
                                     Preview Resume
                                 </Button>
@@ -110,7 +115,7 @@ const Resume = () => {
                                     </Badge>
                                 ))}
                             </div>
-                            <div className="text-sm text-muted-foreground mt-4">
+                            <div className="text-xs text-muted-foreground mt-4">
                                 Last updated: {resumeData.lastUpdated} | File size: ~{resumeData.fileSize}
                             </div>
                         </CardFooter>
