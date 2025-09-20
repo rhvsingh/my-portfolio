@@ -27,8 +27,14 @@ const Footer = () => {
                         </div>
                         <p className="text-muted-foreground">{metaData.description}</p>
                         <ul className="flex space-x-4 mt-2" aria-label="Social media links">
-                            {socialLinks.map((link) => (
-                                <li key={link.link}>
+                            {socialLinks.map((link, index) => (
+                                <motion.li
+                                    key={link.link}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.8, delay: index * 0.5 }}
+                                    viewport={{ once: true }}
+                                >
                                     <a
                                         href={link.link}
                                         target="_blank"
@@ -38,7 +44,7 @@ const Footer = () => {
                                     >
                                         <link.icon className="h-5 w-5" />
                                     </a>
-                                </li>
+                                </motion.li>
                             ))}
                         </ul>
                     </motion.div>
