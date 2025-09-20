@@ -42,7 +42,7 @@ const Header = () => {
     return (
         <motion.header
             className={cn(
-                "sticky top-0 left-0 w-full bg-background/20 backdrop-blur-md z-50",
+                "fixed top-0 left-0 w-full bg-background/20 backdrop-blur-md z-50",
                 isScrolled && "border-b border-b-border"
             )}
             initial={{ y: -100, opacity: 0 }}

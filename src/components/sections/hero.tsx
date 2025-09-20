@@ -1,16 +1,52 @@
 "use client"
 
+import { motion } from "motion/react"
+import { ChevronDown } from "lucide-react"
 import { personalData } from "@/constants/seo-data"
+import { socialLinks } from "@/constants/links-data"
+import { models } from "@/constants/models-data"
 import TheHills from "../three-modals/the-hills"
 import Container from "../ui/container"
-import { motion } from "motion/react"
 import { Button } from "../ui/button"
-import { ChevronDown } from "lucide-react"
-import { socialLinks } from "@/constants/links-data"
+import { useEffect, useState } from "react"
+import GreatMountain from "../three-modals/great-mountain"
+import CloudyMountain from "../three-modals/cloudy-mountain"
 
 const Hero = () => {
+    const [selectedModel, setSelectedModel] = useState(models[0].id)
+
+    useEffect(() => {
+        const stored = localStorage.getItem("selectedModel")
+        if (stored) setSelectedModel(stored)
+    }, [])
+
+    const handleModelChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        localStorage.setItem("selectedModel", event.target.value)
+        setSelectedModel(event.target.value)
+    }
+
+    const ModelRenderer = () => {
+        switch (selectedModel) {
+            case "the-hills":
+                return <TheHills />
+                break
+            case "great-mountain":
+                return <GreatMountain />
+                break
+            case "cloudy-mountain":
+                return <CloudyMountain />
+                break
+            default:
+                return <TheHills />
+        }
+    }
+
     return (
-        <section id="home" className="min-h-screen flex items-center overflow-hidden" aria-label="Hero section">
+        <section
+            id="home"
+            className="min-h-screen flex items-center overflow-hidden relative"
+            aria-label="Hero section"
+        >
             <Container>
                 <div className="max-w-4xl mx-auto text-center space-y-6">
                     <motion.h1
@@ -97,7 +133,25 @@ const Hero = () => {
                         <ChevronDown className="w-6 h-6 text-muted-foreground" />
                     </motion.div>
                 </div>
-                <TheHills />
+
+                <ModelRenderer />
+
+                <div className="absolute right-3 bottom-3 z-10 opacity-70">
+                    <select
+                        name="model"
+                        id="model"
+                        className="bg-transparent text-sm border-b border-b-slate-200 p-2 transition duration-300 ease focus:outline-none focus:border-white hover:border-white shadow-sm focus:shadow-md cursor-pointer text-white"
+                        value={selectedModel}
+                        onChange={handleModelChange}
+                        aria-label="Select 3D Model"
+                    >
+                        {models.map((model) => (
+                            <option key={model.id} value={model.id} className="text-black">
+                                {model.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </Container>
         </section>
     )

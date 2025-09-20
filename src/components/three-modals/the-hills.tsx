@@ -37,7 +37,7 @@ const CameraRig = () => {
 }
 
 const TheHillsModel = (props: React.ComponentProps<"group">) => {
-    const { nodes, materials } = useGLTF("/3d-modals/the-hills/scene.gltf") as GLTFResult
+    const { nodes, materials } = useGLTF("/3d-models/the-hills/scene.gltf") as GLTFResult
 
     return (
         <group {...props} dispose={null}>
@@ -63,7 +63,7 @@ const TheHillsModel = (props: React.ComponentProps<"group">) => {
 }
 
 // Preload the GLTF file
-useGLTF.preload("/3d-modals/the-hills/scene.gltf")
+useGLTF.preload("/3d-models/the-hills/scene.gltf")
 
 const TheHills = () => {
     const isMobile = useMediaQuery({ query: "(max-width: 768px)" })
@@ -75,7 +75,7 @@ const TheHills = () => {
                     <TheHillsModel scale={isMobile ? 4 : 4} position={[0.9, 0, 0]} />
                 </Suspense>
 
-                <ambientLight intensity={3} color={"skyblue"} />
+                <ambientLight intensity={3} color="skyblue" />
                 <directionalLight position={[10, 10, 10]} intensity={1} />
             </Canvas>
         </div>
